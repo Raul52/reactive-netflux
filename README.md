@@ -3,9 +3,9 @@ Diving deeper in reactive programming
 
 **Using:**
 
-Spring Reactive Web
-Lombok
-Reactive MongoDB
+Spring Reactive Web \
+Lombok \
+Reactive MongoDB \
 Embedded MongoDB
 
 **What to check:**
