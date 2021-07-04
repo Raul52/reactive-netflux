@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ro.raulstoica.netflux.domain.Movie;
+import ro.raulstoica.netflux.domain.MovieEvent;
 import ro.raulstoica.netflux.service.MovieService;
+
+import static org.springframework.http.MediaType.TEXT_EVENT_STREAM_VALUE;
 
 @RestController
 @RequestMapping("/movies")
@@ -24,5 +27,10 @@ public class MovieController {
     @GetMapping
     Flux<Movie> getMovies() {
         return movieService.getAllMovies();
+    }
+
+    @GetMapping(value = "/{id}/events", produces = TEXT_EVENT_STREAM_VALUE)
+    Flux<MovieEvent> streamMovieEvents(@PathVariable String id) {
+        return movieService.streamMovieEvents(id);
     }
 }
